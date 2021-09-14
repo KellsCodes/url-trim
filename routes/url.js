@@ -33,8 +33,8 @@ router.post('/add-url', async (req, res) => {
             };
         }
         requestUrl = "";
-        // let newUrl = {shortUrl: `https://url-trim.herokuapp.com/${shortUrl}`, mainUrl: requestUrlSave};
-        let newUrl = {shortUrl: `http://localhost:3100/${shortUrl}`, mainUrl: requestUrlSave};
+        let newUrl = {shortUrl: `https://url-trim.herokuapp.com/${shortUrl}`, mainUrl: requestUrlSave};
+        // let newUrl = {shortUrl: `http://localhost:3100/${shortUrl}`, mainUrl: requestUrlSave};
         
         const uri = new Url(newUrl);
         //  uri.save().then(result => console.log(result)).catch(error => console.log(error));
@@ -74,8 +74,8 @@ router.get('/:url', async (req, res) => {
     const params = req.params.url;
     // console.log(params);
     try {
-        // const dataBaseUrl = await Url.findOne({shortUrl: `https://url-trim.herokuapp.com/${params}`});
-        const dataBaseUrl = await Url.findOne({shortUrl: `http://localhost:3100/${params}`});
+        const dataBaseUrl = await Url.findOne({shortUrl: `https://url-trim.herokuapp.com/${params}`});
+        // const dataBaseUrl = await Url.findOne({shortUrl: `http://localhost:3100/${params}`});
         // console.log(waiting);
         res.status(302).redirect(dataBaseUrl.mainUrl);
     } catch (error) {
